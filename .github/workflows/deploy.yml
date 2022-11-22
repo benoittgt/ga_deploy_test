@@ -19,7 +19,7 @@ jobs:
         id: deployment
         with:
           token: '${{ github.token }}'
-          task: 'deploy:CUSTOM_APP'
+          task: 'deploy:${{ github.event.repository.name }}'
           environment: us-production
           description: '${{ github.event.head_commit.message }}'
 
