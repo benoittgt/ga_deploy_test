@@ -27,6 +27,6 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           token: '${{ github.token }}'
-          environment-url: $(git --no-pager show -s --format="%s")
+          task: $(git --no-pager show -s --format="%s")
           environment: production
           description: ${{ env.TAG_NAME }}
