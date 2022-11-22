@@ -27,7 +27,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           token: '${{ github.token }}'
-          task: '${{ github.event.workflow_run.head_commit.message }}'
+          task: 'task:${{ github.event.head_commit.message }}'
           environment: production
-          description: '${{ github.event.workflow_run.head_commit.message }}'
+          description: '${{ github.event.head_commit.message }}'
 
