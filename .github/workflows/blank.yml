@@ -13,12 +13,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Retrieve version
+        run: |
+          echo ::set-env name=LAST_COMMIT::$(git --no-pager show -s --format="%s")
+
 
       - uses: chrnorm/deployment-action@v2
         name: Create GitHub deployment
         id: deployment
         with:
           token: '${{ github.token }}'
-          environment-url: http://my-app-url.com
+          environment-url: $(git --no-pager show -s --format="%s")
           environment: production
-          description: 'git --no-pager show -s --format="%s"'
+          description: ${{ env.TAG_NAME }}
