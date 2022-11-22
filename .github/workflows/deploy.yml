@@ -13,21 +13,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Retrieve version
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-        run: |
-          echo ::set-env name=LAST_COMMIT::$(git --no-pager show -s --format="%s")
-
-
+ 
       - uses: chrnorm/deployment-action@v2
         name: Create GitHub deployment
         id: deployment
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           token: '${{ github.token }}'
-          task: 'task:${{ github.event.head_commit.message }}'
-          environment: production
+          task: 'deploy:CUSTOM_APP'
+          environment: us-production
           description: '${{ github.event.head_commit.message }}'
 
