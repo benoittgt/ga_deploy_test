@@ -31,6 +31,6 @@ jobs:
         with:
           token: '${{ github.token }}'
           task: 'deploy:${{ github.event.repository.name }}'
-          environment: "${{ env.environment }}"
+          environment: "${{ env.app_environment }}"
           description: '${{ github.event.head_commit.message }}'
 
